@@ -106,7 +106,7 @@ public class CounterTwitchGame : MonoBehaviour
                         {
                             argsTw[1] = CheckValidUser(argsTw[1]);
                             currentDuelPlayer = argsTw[1];
-                            TwitchChat.SendChatMessage("!numduel",argsTw[1]);
+                            TwitchChat.SendChatMessage("!numduel ,use '!numaccept' if you want a duel ", argsTw[1]);
                             TwitchChat.JoinChannel(argsTw[1]);
                             multiplayerState = NumSt.WAITDUEL;
                             Invoke("CancelDuelWait", 120);
@@ -149,7 +149,7 @@ public class CounterTwitchGame : MonoBehaviour
                                     if (multiplayerState == NumSt.WAITDUEL)
                                         CancelInvoke("CancelDuelWait");
                                     argsTw[1] = CheckValidUser(argsTw[1]);
-                                    TwitchChat.SendChatMessage("!numaccept", argsTw[1]);
+                                    TwitchChat.SendChatMessage("!numaccept ", argsTw[1]);
                                     TwitchChat.JoinChannel(argsTw[1]);
                                     currentDuelPlayer = argsTw[1];
                                     CancelInvoke("StopDuel");
@@ -282,6 +282,7 @@ public class CounterTwitchGame : MonoBehaviour
             ResetGameVersus();
             UpdateMaxScoreUIVersus();
             ResetGameVersus();
+            HandleTimeoutMP(chatter);
         }
     }
     private void HandleCorrectResponse(string displayName, Chatter chatter)
@@ -444,7 +445,7 @@ public class CounterTwitchGame : MonoBehaviour
     }
     private void UpdateMaxScoreUIVersus()
     {
-        string scoreText = $"HS{currentDuelPlayer}: {currentMPMaxScore}\nby <color=#3D3C3C>";
+        string scoreText = $"HS {currentDuelPlayer}: {currentMPMaxScore}\nby <color=#3D3C3C>";
         scoreText += currentMPMaxScoreUsername;
         maxScoreTMPVersus.SetText(scoreText);
     }
