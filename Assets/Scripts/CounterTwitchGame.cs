@@ -62,27 +62,6 @@ public class CounterTwitchGame : MonoBehaviour
         UpdateCurrentScoreUI(lastUsername, currentScore.ToString());
         ResetGame();
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            try
-            {
-
-                TwitchChat.JoinChannel("sunavarro");
-                currentDuelPlayer = "sunavarro";
-            }
-            catch
-            {
-                Debug.LogWarning("No se ha iniciado autenticacion");
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            StartDuel();
-        }
-    }
-
     private void OnDestroy()
     {
         TwitchChat.onTwitchMessageReceived -= OnTwitchMessageReceived;
@@ -160,7 +139,6 @@ public class CounterTwitchGame : MonoBehaviour
                                     TwitchChat.SendChatMessage("Forgive the channel to accept");
                                 }
                             }
-                            //tmpif (displayNameSafe.ToLower() == currentDuelPlayer.ToLower())
                             if (displayNameSafe.ToLower() == currentDuelPlayer.ToLower())
                             {
                                 if (multiplayerState == NumSt.WAITDUEL)
@@ -181,7 +159,7 @@ public class CounterTwitchGame : MonoBehaviour
                     Debug.Log("entra en el canal 2");
                     if (!int.TryParse(chatter.message, out int response)) return;
                     string displayName = chatter.IsDisplayNameFontSafe() ? chatter.tags.displayName : chatter.login;
-                    //tmp if (lastMPusername.Equals(displayName)) return;
+                    if(lastMPusername.Equals(displayName)) return;
                     if (response == currentMPScore + 1) HandleCorrectResponseMP(displayName, chatter);
                     else HandleIncorrectResponseMP(displayName, chatter);
                     Debug.Log("Sale del canal 2");
@@ -192,7 +170,7 @@ public class CounterTwitchGame : MonoBehaviour
                     {
                         if (!int.TryParse(chatter.message, out int response1)) return;
                         string displayName = chatter.IsDisplayNameFontSafe() ? chatter.tags.displayName : chatter.login;
-                        //tmp if (lastUsername.Equals(displayName)) return;
+                        if (lastUsername.Equals(displayName)) return;
                         if (response1 == currentScore + 1) HandleCorrectResponse(displayName, chatter);
                         else HandleIncorrectResponse(displayName, chatter);
                     }
@@ -204,7 +182,7 @@ public class CounterTwitchGame : MonoBehaviour
                 {
                     if (!int.TryParse(chatter.message, out int response)) return;
                     string displayName = chatter.IsDisplayNameFontSafe() ? chatter.tags.displayName : chatter.login;
-                    //if (lastUsername.Equals(displayName)) return;
+                    if (lastUsername.Equals(displayName)) return;
                     if (response == currentScore + 1) HandleCorrectResponse(displayName, chatter);
                     else HandleIncorrectResponse(displayName, chatter);
                 }
@@ -214,7 +192,6 @@ public class CounterTwitchGame : MonoBehaviour
     private void StartDuel()
     {
         multiplayerState = NumSt.DUEL;
-        //Invoke("StopDuel", 60 * dueltime);
         totalTimeInSeconds = 60 * dueltime;
         timerTMP.gameObject.SetActive(true);
         StartCoroutine("TimerCoroutine");
