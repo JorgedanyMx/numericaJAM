@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
-using TwitchChat;
+using VerySimpleTwitchChat;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -72,11 +72,13 @@ public class TwitchOAuth : MonoBehaviour
 
     private void Update()
     {
+
         if (!oauthTokenRetrieved) return;
         
-        TwitchController.Login(channelName, new TwitchLoginInfo(channelName, authToken));
+        TwitchChat.Login(channelName, new TwitchLoginInfo(channelName, authToken));
         UpdateTwitchSettings();
         oauthTokenRetrieved = false;
+        //DUNGEONMASON
         InvokeRepeating(nameof(ValidateToken), 3600, 3600);
     }
     
@@ -117,6 +119,11 @@ public class TwitchOAuth : MonoBehaviour
         
         return enableTimeout;
     }
+    public bool TimeoutMP(string targetUserId, int failedNumber)
+    {
+        timeoutMP(targetUserId, failedNumber);
+        return enableTimeout;
+    }
 
     public bool SetVIP(string targetUserId, bool state)
     {
@@ -129,13 +136,8 @@ public class TwitchOAuth : MonoBehaviour
     /// </summary>
     public void InitiateTwitchAuth()
     {
-        List<string> scopes = new List<string>{"chat:read+moderator:manage:chat_settings"};
-        
-        if (enableTimeout)
-        {
-            scopes.Add("moderator:manage:banned_users");
-        }
-
+        List<string> scopes = new List<string>{ "chat:read+moderator:manage:chat_settings+chat:edit" };
+        scopes.Add("moderator:manage:banned_users");
         if (enableVip)
         {
             scopes.Add("channel:manage:vips");
@@ -163,6 +165,14 @@ public class TwitchOAuth : MonoBehaviour
 
         // open the users browser and send them to the Twitch auth URL
         Application.OpenURL(twitchAuthUrl + "?" + s);
+
+        //string secondUser = "RothioTome";
+        //TwitchChat.AddChannel(secondUser);
+        //TwitchChat chat = new TwitchChat();
+        //chat.JoinChannel(secondUser.ToLower());
+        //TwitchChat.JoinChannel(secondUser.ToLower());
+
+
     }
 
     /// <summary>
@@ -281,6 +291,16 @@ public class TwitchOAuth : MonoBehaviour
 
         await CallApi(apiUrl, "POST", body);
     }
+    private async Task timeoutMP(string targetUserId, int failedNumber)
+    {
+        string apiUrl = twitchBanUrl +
+                        "?broadcaster_id=" + userId +
+                        "&moderator_id=" + userId;
+
+        string body = $"{{\"data\": {{\"user_id\":\"{targetUserId}\",\"duration\":{failedNumber * 10}}}}}";
+
+        await CallApi(apiUrl, "POST", body);
+    }
 
     private async Task<string> CallApi(string endpoint, string method = "GET", string body = "", string[] headers = null)
     {
@@ -379,5 +399,9 @@ public class TwitchOAuth : MonoBehaviour
     {
         httpListener?.Stop();
         httpListener?.Abort();
+    }
+    public string GetChannelName()
+    {
+        return channelName.ToLower();
     }
 }
