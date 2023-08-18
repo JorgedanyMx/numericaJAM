@@ -26,6 +26,8 @@ public class CounterTwitchGame : MonoBehaviour
     private string currentMaxScoreUsername = "RothioTome";
     private readonly string currentMaxScoreUsernameKey = "currentMaxScoreUsername";
     private readonly string maxScoreUsernameKey = "maxScoreUsername";
+    private readonly string TrophysKey = "tropyKey";
+    private int tropys;
 
     private string lastUserIdVIPGranted;
     private readonly string lastUserIdVIPGrantedKey = "lastVIPGranted";
@@ -39,7 +41,7 @@ public class CounterTwitchGame : MonoBehaviour
     [SerializeField] private string currentDuelPlayer = "";
 
     [SerializeField] private NumSt multiplayerState = NumSt.NODUEL;
-    private int dueltime = 2;     //time in minutes
+    private int dueltime = 5;     //time in minutes
 
     private int currentMPMaxScore = 0;
     private int currentMPScore = 0;
@@ -57,6 +59,7 @@ public class CounterTwitchGame : MonoBehaviour
         currentMaxScore = PlayerPrefs.GetInt(maxScoreKey);
         currentMaxScoreUsername = PlayerPrefs.GetString(maxScoreUsernameKey, currentMaxScoreUsername);
         lastUserIdVIPGranted = PlayerPrefs.GetString(lastUserIdVIPGrantedKey, string.Empty);
+        tropys = PlayerPrefs.GetInt(TrophysKey,0);
 
         UpdateMaxScoreUI();
         UpdateCurrentScoreUI(lastUsername, currentScore.ToString());
@@ -147,6 +150,9 @@ public class CounterTwitchGame : MonoBehaviour
                             }
                         }
                         break;
+                    case "help":
+                        TwitchChat.SendChatMessage("Use !numduel [channel] for fight, !numaccept [channel] for accept the duel");
+                        break;
                 }
             }
         }
@@ -210,6 +216,8 @@ public class CounterTwitchGame : MonoBehaviour
         if (currentMaxScore > currentMPMaxScore)
         {
             animator.SetTrigger("WinL");
+            tropys++;
+            PlayerPrefs.SetInt(TrophysKey, tropys);
         }
         else
         {
