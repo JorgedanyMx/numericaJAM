@@ -107,7 +107,7 @@ public class TwitchOAuth : MonoBehaviour
         return enableModImmunity;
     }
     
-    public void SetTimeoutMultiplayer(string multiplier)
+    public void SetTimeoutMultiplier(string multiplier)
     {
         int.TryParse(multiplier, out timeoutMultiplier);
         if (timeoutMultiplier < 1) timeoutMultiplier = 10;
@@ -121,8 +121,12 @@ public class TwitchOAuth : MonoBehaviour
     }
     public bool TimeoutMP(string targetUserId, int failedNumber)
     {
-        timeoutMP(targetUserId, failedNumber);
-        return enableTimeout;
+        if (failedNumber > 0)
+        {
+            timeoutMP(targetUserId, failedNumber);
+            return enableTimeout;
+        }
+        else return false;
     }
 
     public bool SetVIP(string targetUserId, bool state)

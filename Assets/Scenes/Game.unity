@@ -390,7 +390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &52617537
 RectTransform:
   m_ObjectHideFlags: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v 1.0 A game by RothioTome. Art by Psuzume
+  m_text: v 1.1 A game Modified by Jorge_dany, Based by RothioTome. Art by Psuzume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cd9337368586d74089447414d72a968, type: 2}
   m_sharedMaterial: {fileID: 7009212365913637915, guid: 7cd9337368586d74089447414d72a968, type: 2}
@@ -767,9 +767,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HIGH SCORE: 35
+  m_text: 'HIGH SCORE: 52
 
-    by whoever'
+    by jorge_dany'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cd9337368586d74089447414d72a968, type: 2}
   m_sharedMaterial: {fileID: 7009212365913637915, guid: 7cd9337368586d74089447414d72a968, type: 2}
@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 33
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fce314fd331d564fa836af7c366f0de, type: 2}
   m_sharedMaterial: {fileID: -4185808251733976048, guid: 4fce314fd331d564fa836af7c366f0de, type: 2}
@@ -1548,18 +1548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: rydialockhart - narilgvb - demigiant - neongarlick - tonyjdev - tita_kati
-    - elendow - montxaldre - heli0path - mr_bunga - unmajete - danirod_ - rurik3d
-    - demiterra - fran_takox - cely_wonka - honranu - mdemarce - n3gativland - chuchocaa
-    - jusimito - ildesir - siliconminds - neusr - simbiosis2013 - eliseveen - roynewo
-    - noahuxui - jynus - caladio_vfx - joseajierro - carmenpilar26 - joemancera -
-    musruk - juanluich - george_3001 - kravetor - arythome - mrpakitow - melenitasdev
-    - guanchecn - psuzume - petrix18 - jmfm3dmodeller - xaviscript - minumcio - nachetehyc
-    - aitorsansal - sailorfu - hengriel - spark2333333 - c_dijo - ikurotime - deepb_
-    - erdracu - afor_digital - alexisoverride - eliontda - elbostwinsen - meldak_dragmire
-    - aldoliva - niadecode - jorrg_01 - altaskur - endorth4 - ned_zib - nihenstalker
-    - laurashiva - rebekpew - cosmos_426 - xxdarknaderxx - tarantino - castlemen1
-    - sebir345 - jimcoaster28 - diejakos - guame_pm - nerophesis - jordiporrasart
+  m_text: 'Powered By Rothio    Original Numerica: https://rothiotome.itch.io/numerica'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cd9337368586d74089447414d72a968, type: 2}
   m_sharedMaterial: {fileID: 7009212365913637915, guid: 7cd9337368586d74089447414d72a968, type: 2}
@@ -1697,7 +1686,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1311496848}
   - {fileID: 2112508765}
@@ -1903,7 +1892,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 45
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fce314fd331d564fa836af7c366f0de, type: 2}
   m_sharedMaterial: {fileID: -4185808251733976048, guid: 4fce314fd331d564fa836af7c366f0de, type: 2}
@@ -2545,7 +2534,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &631988160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,7 +2593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 18
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cd9337368586d74089447414d72a968, type: 2}
   m_sharedMaterial: {fileID: 7009212365913637915, guid: 7cd9337368586d74089447414d72a968, type: 2}
@@ -3699,7 +3688,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'HIGH SCORE: 35
 
-    by whoever'
+    by RothioTome'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cd9337368586d74089447414d72a968, type: 2}
   m_sharedMaterial: {fileID: 7009212365913637915, guid: 7cd9337368586d74089447414d72a968, type: 2}
@@ -3802,7 +3791,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1448945532}
   - {fileID: 1124967050}
@@ -4202,7 +4191,7 @@ MonoBehaviour:
     will increase. \r\n<color=#FFE34F>\xBB</color> If a viewer types the wrong number,
     the counter will restart, and the viewer gets an optional but well-deserved timeout.\r\n<color=#FFE34F>\xBB</color>
     A viewer can't type two consecutive numbers.\n<color=#FFE34F>\xBB</color> Use
-    !numdule [channel] for fight.\n<color=#FFE34F>\xBB</color> Use !numaccept [channel]
+    !numduel [channel] for fight.\n<color=#FFE34F>\xBB</color> Use !numaccept [channel]
     for accept the fight.\n<color=#FFE34F>\xBB</color> In pvp duels, timeout is available,
     and set in 10 seconds."
   m_isRightToLeft: 0
@@ -4321,6 +4310,7 @@ MonoBehaviour:
   currentScoreTMPVersus: {fileID: 324351875}
   maxScoreTMPVersus: {fileID: 1009593950}
   timerTMP: {fileID: 610066416}
+  tropysTMP: {fileID: 631988162}
   startingCanvas: {fileID: 268515986}
   currentDuelPlayer: 
   multiplayerState: 0
@@ -5723,7 +5713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1737951126
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5984,7 +5974,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Username
+  m_text: jorge_dany
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cd9337368586d74089447414d72a968, type: 2}
   m_sharedMaterial: {fileID: 7009212365913637915, guid: 7cd9337368586d74089447414d72a968, type: 2}
@@ -6119,7 +6109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Username
+  m_text: RothioTome
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cd9337368586d74089447414d72a968, type: 2}
   m_sharedMaterial: {fileID: 7009212365913637915, guid: 7cd9337368586d74089447414d72a968, type: 2}
@@ -6414,7 +6404,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: '! In order to play, UniqueChatOff filter and NonModeratorChatDelay will
-    be disabled'
+    be disabled. For multiplayer, Timeout and ModInmunity is enable.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cd9337368586d74089447414d72a968, type: 2}
   m_sharedMaterial: {fileID: 7009212365913637915, guid: 7cd9337368586d74089447414d72a968, type: 2}

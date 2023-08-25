@@ -15,6 +15,7 @@ public class CounterTwitchGame : MonoBehaviour
     [SerializeField] private TextMeshProUGUI maxScoreTMPVersus;
 
     [SerializeField] private TextMeshProUGUI timerTMP;
+    [SerializeField] private TextMeshProUGUI tropysTMP;
 
     private int currentScore;
 
@@ -64,6 +65,15 @@ public class CounterTwitchGame : MonoBehaviour
         UpdateMaxScoreUI();
         UpdateCurrentScoreUI(lastUsername, currentScore.ToString());
         ResetGame();
+        UpdateTrophyUI();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            TwitchChat.JoinChannel("sunavarro");
+            Invoke("StartDuel",2f);
+        }
     }
     private void OnDestroy()
     {
@@ -135,7 +145,7 @@ public class CounterTwitchGame : MonoBehaviour
                                     TwitchChat.JoinChannel(argsTw[1]);
                                     currentDuelPlayer = argsTw[1];
                                     CancelInvoke("StopDuel");
-                                    StartDuel();
+                                    Invoke("StartDuel", 2f);
                                 }
                                 else
                                 {
@@ -146,7 +156,7 @@ public class CounterTwitchGame : MonoBehaviour
                             {
                                 if (multiplayerState == NumSt.WAITDUEL)
                                     CancelInvoke("CancelDuelWait");
-                                StartDuel();
+                                Invoke("StartDuel", 2f);
                             }
                         }
                         break;
@@ -195,6 +205,7 @@ public class CounterTwitchGame : MonoBehaviour
             }   
         }
     }
+
     private void StartDuel()
     {
         multiplayerState = NumSt.DUEL;
@@ -218,6 +229,7 @@ public class CounterTwitchGame : MonoBehaviour
             animator.SetTrigger("WinL");
             tropys++;
             PlayerPrefs.SetInt(TrophysKey, tropys);
+            UpdateTrophyUI();
         }
         else
         {
@@ -267,7 +279,6 @@ public class CounterTwitchGame : MonoBehaviour
             ResetGameVersus();
             UpdateMaxScoreUIVersus();
             ResetGameVersus();
-            HandleTimeoutMP(chatter);
         }
     }
     private void HandleCorrectResponse(string displayName, Chatter chatter)
@@ -294,8 +305,15 @@ public class CounterTwitchGame : MonoBehaviour
                 }
                 HandleNextPotentialVIP();
             }
+            if (multiplayerState == NumSt.DUEL)
+            {
+                HandleTimeoutMP(chatter);
+            }
+            else
+            {
+                HandleTimeout(chatter);
+            }
 
-            HandleTimeout(chatter);
             UpdateMaxScoreUI();
             ResetGame();
         }
@@ -492,6 +510,10 @@ public class CounterTwitchGame : MonoBehaviour
         int minutes = (totalSeconds % 3600) / 60;
         int seconds = totalSeconds % 60;
         return string.Format("{0:D2}:{1:D2}", minutes, seconds);
+    }
+    private void UpdateTrophyUI()
+    {
+        tropysTMP.text = tropys.ToString();
     }
     private enum NumSt
     {
